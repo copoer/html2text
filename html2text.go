@@ -182,7 +182,7 @@ func (ctx *textifyTraverseContext) handleElement(node *html.Node) error {
 	case atom.Blockquote:
 		ctx.blockquoteLevel++
 		if !ctx.options.JustText {
-			tx.prefix = strings.Repeat(">", ctx.blockquoteLevel) + " "
+			ctx.prefix = strings.Repeat(">", ctx.blockquoteLevel) + " "
 		}
 		if err := ctx.emit("\n"); err != nil {
 			return err
