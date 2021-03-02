@@ -221,8 +221,10 @@ func (ctx *textifyTraverseContext) handleElement(node *html.Node) error {
 		return err
 
 	case atom.Li:
-		if err := ctx.emit("* "); err != nil {
-			return err
+		if !ctx.options.JustText {
+			if err := ctx.emit("* "); err != nil {
+				return err
+			}
 		}
 
 		if err := ctx.traverseChildren(node); err != nil {
